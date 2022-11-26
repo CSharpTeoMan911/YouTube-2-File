@@ -57,8 +57,6 @@ namespace YouTube_2_File
             resolutions.Add("480p");
             resolutions.Add("720p");
             resolutions.Add("1080p");
-            resolutions.Add("1440p");
-            resolutions.Add("2160p");
 
 
             Resolution = resolutions[resolution_index];
@@ -233,7 +231,7 @@ namespace YouTube_2_File
 
 
                                     case 2:
-                                        //await video_Processing.YouTube_Video_Processing_Initialisation();
+                                        await video_Processing.YouTube_Video_Processing_Initialisation(2, Video_Link_TextBox.Text, Resolution, test_path);
                                         break;
                                 }
                             }

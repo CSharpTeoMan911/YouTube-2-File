@@ -9,7 +9,7 @@ namespace YouTube_2_File
 {
     internal class Youtube_Video_Processing
     {
-        public Task<bool> YouTube_Video_Processing_Initialisation(int option, string youtube_video_link, string video_resolution, string path_to_save_file)
+        public async Task<bool> YouTube_Video_Processing_Initialisation(int option, string youtube_video_link, string video_resolution, string path_to_save_file)
         {
             System.Threading.Thread ParallelProcessing;
 
@@ -38,7 +38,7 @@ namespace YouTube_2_File
                     break;
             }
 
-            return Task.FromResult(true);
+            return true;
         }
 
         private Task<bool> YouTube_Video_Conversion(string youtube_video_link, string path_to_save_file)
@@ -84,17 +84,7 @@ namespace YouTube_2_File
                 process.StartInfo.UseShellExecute = false;
                 process.Start();
 
-                using (StreamReader program_output_stream_reader = process.StandardOutput)
-                {
-                    using (StreamReader program_error_stream_reader = process.StandardError)
-                    {
-                        string program_output = program_output_stream_reader.ReadLine();
-
-                        string program_error = program_error_stream_reader.ReadLine();
-
-                        System.Diagnostics.Debug.WriteLine("OUTPUT:  " + program_output);
-                    }
-                }
+                
             }
 
             return Task.FromResult(true);
