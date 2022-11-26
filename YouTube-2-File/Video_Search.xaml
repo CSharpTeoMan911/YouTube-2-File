@@ -1,0 +1,130 @@
+﻿<Window x:Class="YouTube_2_File.Video_Search"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YouTube_2_File"
+        mc:Ignorable="d"
+        Title="Video_Search" Height="450" Width="800"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf" WindowStyle="None" AllowsTransparency="True" Opacity="0.95" Background="Black" Loaded="Window_Loaded" SizeChanged="Window_Size_Changed" Closing="Window_Closing">
+
+    <Window.Clip>
+        <RectangleGeometry x:Name="Window_Geometry" Rect="0,0,800,450" RadiusX="10" RadiusY="10"/>
+    </Window.Clip>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+
+        
+
+        <StackPanel Grid.RowSpan="9" Grid.ColumnSpan="9">
+            <Rectangle x:Name="Window_Handle" Grid.ColumnSpan="9" Height="40" VerticalAlignment="Top" MouseDown="Move_The_Window">
+                <Rectangle.Fill>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#FF670000" Offset="1"/>
+                        <GradientStop Color="Red"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+
+            <wv2:WebView2 x:Name="Embedded_Web_Browser_Engine" Source="https://www.youtube.com"/>
+
+        </StackPanel>
+        
+        
+
+        <StackPanel Orientation="Horizontal" Grid.Column="6" Grid.ColumnSpan="3" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="15">
+            
+            <Button x:Name="Minimse_The_Window_Button" Margin="0,0,10,0" Style="{StaticResource Button_With_Red_On_Hover_Effect_Large_Border_Thickness}" FontFamily="Segoe MDL2 Assets" FontSize="12" Content="&#xEF2D;" Click="Minimise_The_Window">
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0, 1" EndPoint="0.5, 1">
+                        <GradientStop Color="White" Offset="1"/>
+                        <GradientStop Color="Gray"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+
+                <Button.Foreground>
+                    <LinearGradientBrush StartPoint="0, 1" EndPoint="0.5, 1">
+                        <GradientStop Color="Red"  Offset="1.4"/>
+                        <GradientStop Color="#FF480303"/>
+                    </LinearGradientBrush>
+                </Button.Foreground>
+            </Button>
+
+            <Button x:Name="Maximise_Or_Normalise_The_Window_Button" Margin="0,0,10,0" Style="{StaticResource Button_With_Red_On_Hover_Effect_Large_Border_Thickness}" FontFamily="Segoe MDL2 Assets" FontSize="12" Content="&#xEF2E;" Click="Maximise_Or_Normalise_The_Window">
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0, 1" EndPoint="0.5, 1">
+                        <GradientStop Color="White" Offset="1"/>
+                        <GradientStop Color="Gray"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+
+                <Button.Foreground>
+                    <LinearGradientBrush StartPoint="0, 1" EndPoint="0.5, 1">
+                        <GradientStop Color="Red"  Offset="1.4"/>
+                        <GradientStop Color="#FF480303"/>
+                    </LinearGradientBrush>
+                </Button.Foreground>
+            </Button>
+
+            <Button x:Name="Close_The_Window_Button" Style="{StaticResource Button_With_Red_On_Hover_Effect_Large_Border_Thickness}" FontFamily="Segoe MDL2 Assets" FontSize="12" Content="&#xEF2C;" Click="Close_The_Window">
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0, 1" EndPoint="0.5, 1">
+                        <GradientStop Color="White" Offset="1"/>
+                        <GradientStop Color="Gray"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+
+                <Button.Foreground>
+                    <LinearGradientBrush StartPoint="0, 1" EndPoint="0.5, 1">
+                        <GradientStop Color="Red"  Offset="1.4"/>
+                        <GradientStop Color="#FF480303"/>
+                    </LinearGradientBrush>
+                </Button.Foreground>
+            </Button>
+        </StackPanel>
+
+
+        <Button Margin="30,8,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.ColumnSpan="2" Content="Select Video" FontSize="20" FontFamily="Impact" Style="{StaticResource Button_With_White_On_Hover_Effect}" Click="Select_Video">
+            
+            <Button.Foreground>
+                <LinearGradientBrush StartPoint="0, 1" EndPoint="0.5, 1">
+                    <GradientStop Color="White" Offset="1"/>
+                    <GradientStop Color="#FF8C8C8C"/>
+                </LinearGradientBrush>
+            </Button.Foreground>
+
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0, 1" EndPoint="0.5, 1">
+                    <GradientStop Color="#FF4C0C0C" Offset="1"/>
+                    <GradientStop Color="Red"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            
+        </Button>
+
+    </Grid>
+</Window>
