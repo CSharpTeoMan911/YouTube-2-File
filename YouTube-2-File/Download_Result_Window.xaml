@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YouTube_2_File"
         mc:Ignorable="d"
-        Title="Download_Result_Window" Height="150" Width="240" WindowStyle="None" AllowsTransparency="True" Opacity="0.95" Loaded="Window_Loaded">
+        Title="Download_Result_Window" Height="150" Width="240" WindowStyle="None" AllowsTransparency="True" Opacity="0.95" Loaded="Window_Loaded" Closing="Window_Closing">
 
     <Window.Clip>
         <RectangleGeometry Rect="0,0,240,150" RadiusX="10" RadiusY="10"/>
@@ -13,8 +13,8 @@
 
     <Window.Background>
         <LinearGradientBrush StartPoint="0, 1" EndPoint="0.5, 1">
-            <GradientStop Color="#FF2B2A2A" Offset="1"/>
-            <GradientStop Color="#FF717171"/>
+            <GradientStop x:Name="Window_Offset" Color="Black" Offset="1"/>
+            <GradientStop Color="#FF272323"/>
         </LinearGradientBrush>
     </Window.Background>
     
@@ -47,7 +47,7 @@
         <Rectangle Grid.ColumnSpan="9" Grid.RowSpan="2" MouseDown="Move_The_Window">
             <Rectangle.Fill>
                 <LinearGradientBrush StartPoint="0, 1" EndPoint="0.5, 1">
-                    <GradientStop Color="Black" Offset="1"/>
+                    <GradientStop x:Name="Window_Handle_Offset" Color="Black" Offset="1"/>
                     <GradientStop Color="#FF272323"/>
                 </LinearGradientBrush>
             </Rectangle.Fill>
@@ -56,18 +56,18 @@
         <Button Grid.Column="7" Grid.ColumnSpan="3" Grid.RowSpan="2" Margin="5" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" Content="&#xEF2C;" FontSize="14" HorizontalAlignment="Right" Style="{StaticResource Button_With_Red_On_Hover_Effect}" Click="Close_The_Window">
             <Button.Foreground>
                 <LinearGradientBrush StartPoint="0, 1" EndPoint="0.5, 1">
-                    <GradientStop Color="#FFD68A8A" Offset="1.3"/>
-                    <GradientStop Color="Red"/>
+                    <GradientStop x:Name="Close_Button_Offset" Color="#FFC70F0F" Offset="1"/>
+                    <GradientStop Color="#FF672121"/>
                 </LinearGradientBrush>
             </Button.Foreground>
         </Button>
 
 
-        <TextBlock x:Name="Video_Conversion_Or_Download_result" Grid.Row="1" Grid.RowSpan="8" Grid.ColumnSpan="9" HorizontalAlignment="Center" VerticalAlignment="Center" Text="VIDEO CONVERSION SUCCESSFUL" FontSize="17" FontFamily="Impact">
+        <TextBlock x:Name="Video_Conversion_Or_Download_result" Grid.Row="1" Grid.RowSpan="8" Grid.ColumnSpan="9" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontFamily="Impact">
             <TextBlock.Foreground>
                 <LinearGradientBrush StartPoint="0, 1" EndPoint="0.5, 1">
-                    <GradientStop Color="#FFC70F0F" Offset="1"/>
-                    <GradientStop Color="#FF2F1111"/>
+                    <GradientStop x:Name="Result_Textblock_Offset" Color="#FFC70F0F" Offset="1"/>
+                    <GradientStop Color="#FF672121"/>
                 </LinearGradientBrush>
             </TextBlock.Foreground>
         </TextBlock>

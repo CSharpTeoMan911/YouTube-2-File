@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YouTube_2_File"
         mc:Ignorable="d"
-        Height="300" Width="350" WindowStyle="None" AllowsTransparency="True" Opacity="0.95" Loaded="Window_Loaded" Closing="Window_Is_Closing" Background="Black">
+        Height="300" Width="350" WindowStyle="None" AllowsTransparency="True" Opacity="0.95" Loaded="Window_Loaded" Closing="Window_Is_Closing" Background="Black" Icon="/YouTube2File_Logo.png">
 
     <Window.Clip>
         <RectangleGeometry x:Name="Window_Geometry" Rect="0,0,350,300" RadiusX="10" RadiusY="10"/>
@@ -39,18 +39,17 @@
         <Rectangle Grid.ColumnSpan="9" MouseDown="Move_The_Window">
             <Rectangle.Fill>
                 <LinearGradientBrush StartPoint="0, 1" EndPoint="0.5, 1">
-                    <GradientStop Color="#FFAB1010" Offset="1"/>
+                    <GradientStop x:Name="Window_Handle_Offset" Color="#FFAB1010" Offset="1"/>
                     <GradientStop Color="#FF2D0303"/>
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
 
-        
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="3" Grid.Column="6" Grid.ColumnSpan="3">
             <Button Margin="0,0,10,0" FontFamily="Segoe MDL2 Assets" FontSize="15" Style="{StaticResource Button_With_White_On_Hover_Effect}" Content="&#xEF2D;" Click="Minimise_The_Window">
                 <Button.Foreground>
                     <LinearGradientBrush StartPoint="0, 1" EndPoint="0.5, 1">
-                        <GradientStop Color="White" Offset="1"/>
+                        <GradientStop x:Name="Minimse_Button_Offset" Color="White" Offset="1"/>
                         <GradientStop Color="#FF505252"/>
                     </LinearGradientBrush>
                 </Button.Foreground>
@@ -59,14 +58,12 @@
             <Button FontFamily="Segoe MDL2 Assets" FontSize="15" Style="{StaticResource Button_With_White_On_Hover_Effect}" Content="&#xEF2C;" Click="Close_The_Window">
                 <Button.Foreground>
                     <LinearGradientBrush StartPoint="0, 1" EndPoint="0.5, 1">
-                        <GradientStop Color="White" Offset="1"/>
+                        <GradientStop x:Name="Close_Button_Offset" Color="White" Offset="1"/>
                         <GradientStop Color="#FF505252"/>
                     </LinearGradientBrush>
                 </Button.Foreground>
             </Button>
         </StackPanel>
-
-
 
         <StackPanel Grid.Row="1" Grid.ColumnSpan="9" Grid.RowSpan="8" VerticalAlignment="Center" HorizontalAlignment="Center">
 
@@ -84,7 +81,6 @@
                     <RectangleGeometry Rect="0,0,300,80" RadiusX="10" RadiusY="10"/>
                 </StackPanel.Clip>
 
-
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,0" Orientation="Horizontal">
 
                     <TextBlock x:Name="Youtube_Video_Link_TextBlock" VerticalAlignment="Center" Foreground="White" FontSize="12" FontFamily="Impact" Text="Insert Youtube Video Link :  "/>
@@ -93,30 +89,27 @@
 
                 </StackPanel>
 
-
                 <TextBlock Margin="0,10,0,10" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontFamily="Impact" Text="OR"/>
-
 
                 <Button Margin="10,0,0,0" Style="{StaticResource Button_With_White_On_Hover_Effect}" HorizontalAlignment="Center" FontSize="12" FontFamily="Impact" Content="Search Video on Youtube" Click="Search_YouTube_Video">
 
                     <Button.Background>
                         <LinearGradientBrush StartPoint="0, 1" EndPoint="0.5, 1">
-                            <GradientStop Color="#FF4C0C0C" Offset="1"/>
-                            <GradientStop Color="Red"/>
+                            <GradientStop x:Name="Video_Search_Background_Offset" Color="Red" Offset="1"/>
+                            <GradientStop Color="#FF4C0C0C"/>
                         </LinearGradientBrush>
                     </Button.Background>
 
                     <Button.Foreground>
                         <LinearGradientBrush StartPoint="0, 1" EndPoint="0.5, 1">
-                            <GradientStop Color="White" Offset="1"/>
-                            <GradientStop Color="#FF8C8C8C"/>
+                            <GradientStop x:Name="Video_Search_Foreground_Offset" Color="#FF8C8C8C" Offset="1"/>
+                            <GradientStop Color="White"/>
                         </LinearGradientBrush>
                     </Button.Foreground>
 
                 </Button>
 
             </StackPanel>
-
 
             <StackPanel x:Name="Video_Resolution_Stackpanel" Margin="0,40,0,0" Height="50" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center">
 
@@ -146,101 +139,71 @@
 
             </StackPanel>
 
-
             <Button x:Name="Video_Conversion_Or_Download" Margin="0,40,0,0" Grid.Row="7" Grid.ColumnSpan="9" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Impact" Content="Download Video" Style="{StaticResource Button_With_White_On_Hover_Effect}" Click="Download_Or_Convert_Video">
 
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0, 1" EndPoint="0.5, 1">
-                        <GradientStop Color="#FF4C0C0C" Offset="1"/>
-                        <GradientStop Color="Red"/>
+                        <GradientStop x:Name="Video_Download_Background_Offset" Color="Red" Offset="1"/>
+                        <GradientStop Color="#FF4C0C0C"/>
                     </LinearGradientBrush>
                 </Button.Background>
 
                 <Button.Foreground>
                     <LinearGradientBrush StartPoint="0, 1" EndPoint="0.5, 1">
-                        <GradientStop Color="White" Offset="1"/>
-                        <GradientStop Color="#FF8C8C8C"/>
+                        <GradientStop x:Name="Video_Download_Foreground_Offset" Color="#FF8C8C8C" Offset="1"/>
+                        <GradientStop Color="White"/>
                     </LinearGradientBrush>
                 </Button.Foreground>
 
             </Button>
 
-
         </StackPanel>
-
 
         <StackPanel x:Name="Downloading_Content_Message_Stackpanel" Height="0" Grid.Row="1" Grid.ColumnSpan="9" Grid.RowSpan="8">
 
             <StackPanel.Background>
                 <LinearGradientBrush StartPoint="0, 1" EndPoint="0.5, 1">
-                    <GradientStop Color="#FF353535" Offset="1"/>
-                    <GradientStop Color="#FF0C0E10"/>
+                    <GradientStop x:Name="Download_Main_Stackpanel_Offset" Color="#FF380000" Offset="1"/>
+                    <GradientStop Color="#FF1D1212"/>
                 </LinearGradientBrush>
             </StackPanel.Background>
 
-
-
-            <StackPanel Height="200" Width="250" Margin="0,30,0,0">
+            <StackPanel Height="160" Width="250" Margin="0,50,0,0">
 
                 <StackPanel.Background>
                     <LinearGradientBrush StartPoint="0, 1" EndPoint="0.5, 1">
-                        <GradientStop Color="Black" Offset="1"/>
-                        <GradientStop Color="#FF630B0B"/>
+                        <GradientStop x:Name="Download_Secondary_Stackpanel_Offset" Color="#FF630B0B" Offset="1"/>
+                        <GradientStop Color="Black"/>
                     </LinearGradientBrush>
                 </StackPanel.Background>
-                
+
                 <StackPanel.Clip>
-                    <RectangleGeometry Rect="0,0,250,200" RadiusX="10" RadiusY="10"/>
+                    <RectangleGeometry Rect="0,0,250,160" RadiusX="10" RadiusY="10"/>
                 </StackPanel.Clip>
 
-                <TextBlock x:Name="Warning_TextBlock" Margin="0,50,0,0" HorizontalAlignment="Center" Text="Do Not Close The Program" FontFamily="Impact" FontSize="20" Foreground="#FF820F0F"/>
+                <TextBlock x:Name="Warning_TextBlock" Margin="0,30,0,0" HorizontalAlignment="Center" Text="DO NOT CLOSE THE PROGRAM" FontFamily="Impact" FontSize="20">
+                    <TextBlock.Foreground>
+                        <LinearGradientBrush StartPoint="0, 1" EndPoint="0.5, 1">
+                            <GradientStop x:Name="Warning_Textblock_Offset" Color="#FF757373" Offset="1"/>
+                            <GradientStop Color="#FF3E3E3E"/>
+                        </LinearGradientBrush>
+                    </TextBlock.Foreground>
+                </TextBlock>
 
-                <TextBlock x:Name="Downloading_TextBlock" Margin="0,50,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Downloading . . ." FontFamily="Impact" FontSize="20">
+                <TextBlock x:Name="Downloading_TextBlock" Margin="0,50,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="DOWNLOADING . . ." FontFamily="Impact" FontSize="20">
 
                     <TextBlock.Foreground>
                         <LinearGradientBrush StartPoint="0, 1" EndPoint="0.5, 1">
-                            <GradientStop Color="#FF630B0B" Offset="1"/>
-                            <GradientStop Color="Red"/>
+                            <GradientStop x:Name="Downloading_TextBlock_Offset" Color="Red" Offset="1"/>
+                            <GradientStop Color="#FF630B0B"/>
                         </LinearGradientBrush>
                     </TextBlock.Foreground>
 
                 </TextBlock>
+                
             </StackPanel>
 
         </StackPanel>
-
-
-        
-
-
-        
-
-        <!--<TextBlock Margin="0,50,0,5" Foreground="White" HorizontalAlignment="Center" Text="Video Resolution" FontFamily="Impact"/>
-
-        <TextBlock x:Name="Video_Resolution_Display" Text="720p" Foreground="Red" FontFamily="Impact" HorizontalAlignment="Center"/>
-
-
-
-        <Button Margin="0,50,0,0" Grid.Row="8" Grid.ColumnSpan="9" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Impact" Content="Download" Style="{StaticResource Button_With_White_On_Hover_Effect}">
-
-            <Button.Background>
-                <LinearGradientBrush StartPoint="0, 1" EndPoint="0.5, 1">
-                    <GradientStop Color="#FF4C0C0C" Offset="1"/>
-                    <GradientStop Color="Red"/>
-                </LinearGradientBrush>
-            </Button.Background>
-
-            <Button.Foreground>
-                <LinearGradientBrush StartPoint="0, 1" EndPoint="0.5, 1">
-                    <GradientStop Color="White" Offset="1"/>
-                    <GradientStop Color="#FF8C8C8C"/>
-                </LinearGradientBrush>
-            </Button.Foreground>
-
-        </Button>-->
-
-        <!--x:Name="Video_Resolution_Display_720p"-->
-        
 
     </Grid>
 </Window>

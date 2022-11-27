@@ -31,6 +31,5 @@ class YouTube_Video_Download:
             output_path=str(self.path_to_save_file))
 
         os.rename(video_path, video_path + ".mp4")
-        print(video_path)
         sys.exit(0)
 

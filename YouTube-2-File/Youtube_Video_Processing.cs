@@ -27,11 +27,11 @@ namespace YouTube_2_File
                         switch(youtube_conversion_result)
                         {
                             case true:
-                                Video_Download_Window.Download_Result = "VIDEO CONVERSSION SUCCESSFUL";
+                                Video_Download_Window.Download_Result = "VIDEO CONVERSSION\nSUCCESSFUL";
                                 break;
 
                             case false:
-                                Video_Download_Window.Download_Result = "VIDEO CONVERSSION FAILED";
+                                Video_Download_Window.Download_Result = "VIDEO CONVERSSION\nFAILED";
                                 break;
                         }
                     });
@@ -53,11 +53,11 @@ namespace YouTube_2_File
                         switch (youtube_video_download_result)
                         {
                             case true:
-                                Video_Download_Window.Download_Result = "VIDEO DOWNLOAD SUCCESSFUL";
+                                Video_Download_Window.Download_Result = "VIDEO DOWNLOAD\nSUCCESSFUL";
                                 break;
 
                             case false:
-                                Video_Download_Window.Download_Result = "VIDEO DOWNLOAD FAILED";
+                                Video_Download_Window.Download_Result = "VIDEO DOWNLOAD\nFAILED";
                                 break;
                         }
                     });
@@ -86,24 +86,15 @@ namespace YouTube_2_File
                 process.StartInfo.UseShellExecute = false;
                 process.Start();
 
-
                 using (StreamReader program_error_stream_reader = process.StandardError)
                 {
                     string program_error = program_error_stream_reader.ReadLine();
 
-                    System.Diagnostics.Debug.WriteLine(program_error + "    <== Error");
+                    if (program_error != null)
+                    {
+                        youtube_conversion_result = false;
+                    }
 
-                    if(program_error != null)
-                    {
-                        if (program_error != String.Empty)
-                        {
-                            youtube_conversion_result = false;
-                        }
-                    }
-                    else
-                    {
-                        System.Diagnostics.Debug.WriteLine(program_error.Length + "    <== Error Count");
-                    }
                 }
 
             }
@@ -130,7 +121,7 @@ namespace YouTube_2_File
                 {
                     string program_error = program_error_stream_reader.ReadLine();
 
-                    if(program_error != String.Empty || program_error != null)
+                    if (program_error != null)
                     {
                         youtube_video_download_result = false;
                     }

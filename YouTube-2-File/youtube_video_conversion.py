@@ -26,5 +26,5 @@ class YouTube_Video_Conversion:
             output_path=str(self.path_to_save_file))
 
         os.rename(audio_path, audio_path + ".mp3")
-        print(audio_path)
+        sys.exit(0)
 
