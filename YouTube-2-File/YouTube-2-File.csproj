@@ -147,6 +147,8 @@
     <Resource Include="Y2F_LOGO.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="YouTube2File_Logo.png" />
+    <Resource Include="Logo.ico" />
     <Content Include="youtube_video_conversion.py" />
     <Content Include="youtube_video_download.py" />
     <Content Include="youtube_video_operational_controller.py" />
