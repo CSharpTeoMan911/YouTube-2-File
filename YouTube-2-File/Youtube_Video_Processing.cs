@@ -9,7 +9,7 @@ namespace YouTube_2_File
 {
     internal class Youtube_Video_Processing
     {
-        public async Task<bool> YouTube_Video_Processing_Initialisation(int option, string youtube_video_link, string video_resolution, string path_to_save_file)
+        public Task<bool> YouTube_Video_Processing_Initialisation(int option, string youtube_video_link, string video_resolution, string path_to_save_file)
         {
             System.Threading.Thread ParallelProcessing;
 
@@ -18,7 +18,22 @@ namespace YouTube_2_File
                 case 1:
                     ParallelProcessing = new System.Threading.Thread(async() =>
                     {
-                        await YouTube_Video_Conversion(youtube_video_link, path_to_save_file);
+                        bool youtube_conversion_result = await YouTube_Video_Conversion(youtube_video_link, path_to_save_file);
+
+                        Video_Download_Window.Downloading_Started = false;
+                        Video_Download_Window.Downloading_Dot_Index = 0;
+                        Video_Download_Window.Display_Download_Result = true;
+
+                        switch(youtube_conversion_result)
+                        {
+                            case true:
+                                Video_Download_Window.Download_Result = "VIDEO CONVERSSION SUCCESSFUL";
+                                break;
+
+                            case false:
+                                Video_Download_Window.Download_Result = "VIDEO CONVERSSION FAILED";
+                                break;
+                        }
                     });
                     ParallelProcessing.SetApartmentState(System.Threading.ApartmentState.MTA);
                     ParallelProcessing.Priority = System.Threading.ThreadPriority.AboveNormal;
@@ -29,7 +44,22 @@ namespace YouTube_2_File
                 case 2:
                     ParallelProcessing = new System.Threading.Thread(async () =>
                     {
-                        await YouTube_Video_Download(youtube_video_link, video_resolution, path_to_save_file);
+                        bool youtube_video_download_result = await YouTube_Video_Download(youtube_video_link, video_resolution, path_to_save_file);
+
+                        Video_Download_Window.Downloading_Started = false;
+                        Video_Download_Window.Downloading_Dot_Index = 0;
+                        Video_Download_Window.Display_Download_Result = true;
+
+                        switch (youtube_video_download_result)
+                        {
+                            case true:
+                                Video_Download_Window.Download_Result = "VIDEO DOWNLOAD SUCCESSFUL";
+                                break;
+
+                            case false:
+                                Video_Download_Window.Download_Result = "VIDEO DOWNLOAD FAILED";
+                                break;
+                        }
                     });
                     ParallelProcessing.SetApartmentState(System.Threading.ApartmentState.MTA);
                     ParallelProcessing.Priority = System.Threading.ThreadPriority.AboveNormal;
@@ -38,11 +68,13 @@ namespace YouTube_2_File
                     break;
             }
 
-            return true;
+            return Task.FromResult(true);
         }
 
         private Task<bool> YouTube_Video_Conversion(string youtube_video_link, string path_to_save_file)
         {
+            bool youtube_conversion_result = true;
+
             using (System.Diagnostics.Process process = new System.Diagnostics.Process())
             {
                 process.StartInfo.FileName = Environment.CurrentDirectory + "\\python.exe";
@@ -55,24 +87,34 @@ namespace YouTube_2_File
                 process.Start();
 
 
-                using (StreamReader program_output_stream_reader = process.StandardOutput)
+                using (StreamReader program_error_stream_reader = process.StandardError)
                 {
-                    using (StreamReader program_error_stream_reader = process.StandardError)
+                    string program_error = program_error_stream_reader.ReadLine();
+
+                    System.Diagnostics.Debug.WriteLine(program_error + "    <== Error");
+
+                    if(program_error != null)
                     {
-                        string program_output = program_output_stream_reader.ReadLine();
-
-                        string program_error = program_error_stream_reader.ReadLine();
-
-                        System.Diagnostics.Debug.WriteLine("OUTPUT:  " + program_output);
+                        if (program_error != String.Empty)
+                        {
+                            youtube_conversion_result = false;
+                        }
+                    }
+                    else
+                    {
+                        System.Diagnostics.Debug.WriteLine(program_error.Length + "    <== Error Count");
                     }
                 }
+
             }
 
-            return Task.FromResult(true);
+            return Task.FromResult(youtube_conversion_result);
         }
 
         private Task<bool> YouTube_Video_Download(string youtube_video_link, string video_resolution, string path_to_save_file)
         {
+            bool youtube_video_download_result = true;
+
             using (System.Diagnostics.Process process = new System.Diagnostics.Process())
             {
                 process.StartInfo.FileName = Environment.CurrentDirectory + "\\python.exe";
@@ -84,10 +126,19 @@ namespace YouTube_2_File
                 process.StartInfo.UseShellExecute = false;
                 process.Start();
 
-                
+                using (StreamReader program_error_stream_reader = process.StandardError)
+                {
+                    string program_error = program_error_stream_reader.ReadLine();
+
+                    if(program_error != String.Empty || program_error != null)
+                    {
+                        youtube_video_download_result = false;
+                    }
+                }
+
             }
 
-            return Task.FromResult(true);
+            return Task.FromResult(youtube_video_download_result);
         }
     }
 }

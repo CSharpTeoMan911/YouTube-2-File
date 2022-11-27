@@ -169,7 +169,45 @@
         </StackPanel>
 
 
-        
+        <StackPanel x:Name="Downloading_Content_Message_Stackpanel" Height="0" Grid.Row="1" Grid.ColumnSpan="9" Grid.RowSpan="8">
+
+            <StackPanel.Background>
+                <LinearGradientBrush StartPoint="0, 1" EndPoint="0.5, 1">
+                    <GradientStop Color="#FF353535" Offset="1"/>
+                    <GradientStop Color="#FF0C0E10"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+
+
+
+            <StackPanel Height="200" Width="250" Margin="0,30,0,0">
+
+                <StackPanel.Background>
+                    <LinearGradientBrush StartPoint="0, 1" EndPoint="0.5, 1">
+                        <GradientStop Color="Black" Offset="1"/>
+                        <GradientStop Color="#FF630B0B"/>
+                    </LinearGradientBrush>
+                </StackPanel.Background>
+                
+                <StackPanel.Clip>
+                    <RectangleGeometry Rect="0,0,250,200" RadiusX="10" RadiusY="10"/>
+                </StackPanel.Clip>
+
+                <TextBlock x:Name="Warning_TextBlock" Margin="0,50,0,0" HorizontalAlignment="Center" Text="Do Not Close The Program" FontFamily="Impact" FontSize="20" Foreground="#FF820F0F"/>
+
+                <TextBlock x:Name="Downloading_TextBlock" Margin="0,50,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Downloading . . ." FontFamily="Impact" FontSize="20">
+
+                    <TextBlock.Foreground>
+                        <LinearGradientBrush StartPoint="0, 1" EndPoint="0.5, 1">
+                            <GradientStop Color="#FF630B0B" Offset="1"/>
+                            <GradientStop Color="Red"/>
+                        </LinearGradientBrush>
+                    </TextBlock.Foreground>
+
+                </TextBlock>
+            </StackPanel>
+
+        </StackPanel>
 
 
         

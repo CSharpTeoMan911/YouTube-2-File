@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,16 @@ namespace YouTube_2_File
     public partial class Video_Download_Window : Window
     {
         private static int Operation;
+
+        public static bool Downloading_Started;
+
+        public static bool Display_Download_Result;
+
+        public static string Download_Result;
+
+        public static int Downloading_Dot_Index;
+
+        
 
 
         private readonly List<string> resolutions = new List<string>();
@@ -56,7 +67,6 @@ namespace YouTube_2_File
             resolutions.Add("360p");
             resolutions.Add("480p");
             resolutions.Add("720p");
-            resolutions.Add("1080p");
 
 
             Resolution = resolutions[resolution_index];
@@ -93,6 +103,46 @@ namespace YouTube_2_File
                                     Video_Link_TextBox.Text = video_link_buffer;
                                     video_link_buffer = null;
                                 }
+
+                                switch(Downloading_Started == true)
+                                {
+                                    case true:
+                                        Downloading_Dot_Index++;
+
+                                        if (Downloading_Dot_Index == 1)
+                                        {
+                                            Downloading_TextBlock.Text = "Downloading .    ";
+                                        }
+                                        else if (Downloading_Dot_Index == 2)
+                                        {
+                                            Downloading_TextBlock.Text = "Downloading . .  ";
+                                        }
+                                        else
+                                        {
+                                            Downloading_TextBlock.Text = "Downloading . . .";
+
+                                            Downloading_Dot_Index = 0;
+                                        }
+                                        break;
+
+                                    case false:
+                                        Video_Conversion_Or_Download.IsEnabled = true;
+                                        Downloading_Content_Message_Stackpanel.Height = 0;
+                                        break;
+                                }
+
+
+                                if (Display_Download_Result == true)
+                                {
+                                    Display_Download_Result = false;
+
+                                    Download_Result_Window download_Result_Window = new Download_Result_Window(Download_Result);
+                                    download_Result_Window.ShowDialog();
+
+                                    Download_Result = null;
+                                }
+
+
                             });
                         }
                         else
@@ -216,23 +266,34 @@ namespace YouTube_2_File
                         {
 
                             bool link_validation_result = await Verify_If_Link_Is_Valid.Link_Validation_Initiator(Video_Link_TextBox.Text);
-                            string test_path = @"C:\Users\Teodor Mihail\Desktop";
 
-                            if(link_validation_result == true)
+                            if (link_validation_result == true)
                             {
                                 Youtube_Video_Processing video_Processing = new Youtube_Video_Processing();
 
-                                switch (Operation)
+                                using (System.Windows.Forms.FolderBrowserDialog file_path_extractor = new System.Windows.Forms.FolderBrowserDialog())
                                 {
-                                    case 1:
-                                        await video_Processing.YouTube_Video_Processing_Initialisation(1, Video_Link_TextBox.Text, null, test_path);
-                                        break;
+                                    if (file_path_extractor.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                                    {
+                                        Downloading_Content_Message_Stackpanel.Height = this.ActualHeight;
+
+                                        Downloading_Started = true;
+
+                                        switch (Operation)
+                                        {
+                                            case 1:
+                                                await video_Processing.YouTube_Video_Processing_Initialisation(1, Video_Link_TextBox.Text, null, file_path_extractor.SelectedPath);
+                                                Video_Conversion_Or_Download.IsEnabled = false;
+                                                break;
 
 
 
-                                    case 2:
-                                        await video_Processing.YouTube_Video_Processing_Initialisation(2, Video_Link_TextBox.Text, Resolution, test_path);
-                                        break;
+                                            case 2:
+                                                await video_Processing.YouTube_Video_Processing_Initialisation(2, Video_Link_TextBox.Text, Resolution, file_path_extractor.SelectedPath);
+                                                Video_Conversion_Or_Download.IsEnabled = false;
+                                                break;
+                                        }
+                                    }
                                 }
                             }
 
