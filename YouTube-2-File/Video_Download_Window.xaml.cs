@@ -72,7 +72,7 @@ namespace YouTube_2_File
 
         private readonly List<string> resolutions = new List<string>();
         private string Resolution;
-        private int resolution_index = 4;
+        private int resolution_index;
 
 
         
@@ -109,9 +109,9 @@ namespace YouTube_2_File
             resolutions.Add("144p");
             resolutions.Add("240p");
             resolutions.Add("360p");
-            resolutions.Add("480p");
             resolutions.Add("720p");
 
+            resolution_index = resolutions.Count() - 1;
 
             Resolution = resolutions[resolution_index];
             Video_Resolution_Display.Text = Resolution;
