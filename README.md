@@ -13,7 +13,7 @@ It is an application that is letting users either donwload videos or convert vid
 
 ## Installation
 
-Click on this [link](https://1drv.ms/u/s!Aj41UFKudPgkg-cBaisbquiHnAchwA?e=WxekEb) and download the installer.
+Click on this [link](https://1drv.ms/u/s!Aj41UFKudPgkg-cBaisbquiHnAchwA?e=WxekEb) and download Y2F.
 
 
 <br>
