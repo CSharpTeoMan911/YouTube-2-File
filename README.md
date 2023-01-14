@@ -27,7 +27,7 @@ ___________________________________
 
 ### Python setup
 
-You need to install the [Python Installer](https://www.python.org/downloads/) and install Python in your desired folder application's folder, either Debug or Release. The aforementioned step must be implemented in order to create a Python virtual within the application's folder in order to run core application functionalities, fulfilled by the python scripts. After this you need to copy the 3 python files within your desired folder application's folder, either Debug or Release. 
+You need to install the [Python Installer](https://www.python.org/downloads/) and install Python in your desired folder application's folder, either Debug or Release. The aforementioned step must be implemented in order to create a Python virtual environment within the application's folder in order to run core application functionalities, fulfilled by the python scripts. After this you need to copy the 3 python files within your desired folder application's folder, either Debug or Release. 
 
 ![Eva_Capture2110672485](https://user-images.githubusercontent.com/87245086/204159367-f0f39ce4-491d-4f11-b6e1-4214cdecfc7d.jpg)
 ![Eva_Capture1864185033](https://user-images.githubusercontent.com/87245086/204159369-a690285c-411e-4449-a2d6-3ac16cf76cca.jpg)
