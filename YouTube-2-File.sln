@@ -5,7 +5,7 @@ VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YouTube-2-File", "YouTube-2-File\YouTube-2-File.csproj", "{AFF46EF0-40CB-4E9F-AC62-7A312E23A5D4}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Y2F", "Y2F\Y2F.vdproj", "{29691C0C-7EB5-4B85-AAFF-BA55DCF93AF3}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Y2F", "Y2F\Y2F.vdproj", "{286D655F-F844-4354-990B-A9949B67F430}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +17,8 @@ Global
 		{AFF46EF0-40CB-4E9F-AC62-7A312E23A5D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFF46EF0-40CB-4E9F-AC62-7A312E23A5D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFF46EF0-40CB-4E9F-AC62-7A312E23A5D4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{29691C0C-7EB5-4B85-AAFF-BA55DCF93AF3}.Debug|Any CPU.ActiveCfg = Debug
-		{29691C0C-7EB5-4B85-AAFF-BA55DCF93AF3}.Release|Any CPU.ActiveCfg = Release
+		{286D655F-F844-4354-990B-A9949B67F430}.Debug|Any CPU.ActiveCfg = Debug
+		{286D655F-F844-4354-990B-A9949B67F430}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

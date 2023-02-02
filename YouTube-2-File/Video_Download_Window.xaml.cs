@@ -107,7 +107,6 @@ namespace YouTube_2_File
             animation_timer.Start();
 
             resolutions.Add("144p");
-            resolutions.Add("240p");
             resolutions.Add("360p");
             resolutions.Add("720p");
 
