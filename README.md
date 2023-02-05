@@ -13,7 +13,7 @@ It is an application that is letting users either donwload videos or convert vid
 
 ## Installation
 
-Click on this [link](https://drive.google.com/file/d/13UABVlBL96Tx4SQk7hcMhkBOTJ03BVgh/view?usp=sharing) and download Y2F.
+Click on this [link](https://sourceforge.net/projects/youtube-2-file/) and download Y2F.
 
 
 <br>
